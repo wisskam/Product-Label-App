@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="WPF_ProductLabel.Views.FieldList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_ProductLabel.Views"
+             xmlns:model="clr-namespace:WPF_ProductLabel.Model"
+             xmlns:sr="clr-namespace:WPF_ProductLabel.StaticResources"
+             xmlns:core="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="500">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="Types" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="sr:TypesEnum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="Fonts" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="sr:FontsEnum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="Weigths" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="sr:WeightEnum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="Colors" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="sr:ColorEnum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="TextAlignments" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="sr:TextAlignmentEnum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+    <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Path=TempLayout.Fields}" SelectedItem="{Binding SelectedField}">
+        <DataGrid.Columns>
+            <DataGridComboBoxColumn Header="Type"
+                                    ItemsSource="{Binding Source={StaticResource Types}}"
+                                    SelectedItemBinding="{Binding Type}"/>
+            <DataGridComboBoxColumn Header="Font"
+                                    ItemsSource="{Binding Source={StaticResource Fonts}}"
+                                    SelectedItemBinding="{Binding FontFamily}"/>
+            <DataGridTextColumn Header="Font size" Binding="{Binding FontSize}"/>
+            <DataGridComboBoxColumn Header="Weight"
+                                    ItemsSource="{Binding Source={StaticResource Weigths}}"
+                                    SelectedItemBinding="{Binding Weight}"/>
+            <DataGridComboBoxColumn Header="Color"
+                                    ItemsSource="{Binding Source={StaticResource Colors}}"
+                                    SelectedItemBinding="{Binding Color}"/>
+            <DataGridComboBoxColumn Header="TextAlignments"
+                                    ItemsSource="{Binding Source={StaticResource TextAlignments}}"
+                                    SelectedItemBinding="{Binding TextAlignment}"/>
+            <DataGridTextColumn Header="Width" Binding="{Binding Width}"/>
+            <DataGridTextColumn Header="Height" Binding="{Binding Height}"/>
+            <DataGridTextColumn Header="Default" Binding="{Binding Value}"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

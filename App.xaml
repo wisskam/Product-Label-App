@@ -1,0 +1,119 @@
+﻿<Application x:Class="WPF_ProductLabel.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WPF_ProductLabel"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="MainColor">#FF409191</SolidColorBrush>
+        <SolidColorBrush x:Key="SecondaryColor">#FF057676</SolidColorBrush>
+        <SolidColorBrush x:Key="TertiaryColor">#FF3C8787</SolidColorBrush>
+        <SolidColorBrush x:Key="MainFontColor">#FFE2E2E2</SolidColorBrush>
+        <SolidColorBrush x:Key="SecondaryFontColor">#FFACACAC</SolidColorBrush>
+        <SolidColorBrush x:Key="MainButtonHoverColor">#FF61ACAC</SolidColorBrush>
+        <SolidColorBrush x:Key="DangerColor" Color="#FFB43326"/>
+        <SolidColorBrush x:Key="LightDangerColor">#FFD15858</SolidColorBrush>
+        <SolidColorBrush x:Key="SuccessColor" Color="#FF349318"/>
+        <SolidColorBrush x:Key="LightSuccessColor" Color="#FF67BF4C"/>
+        <SolidColorBrush x:Key="InfoColor">#FF006161</SolidColorBrush>
+        <SolidColorBrush x:Key="InfoFontColor">#FF5C9999</SolidColorBrush>
+        <SolidColorBrush x:Key="DisabledColor">#FF3D6A6A</SolidColorBrush>
+        <SolidColorBrush x:Key="DisabledDangerColor">#FF895050</SolidColorBrush>
+        <SolidColorBrush x:Key="DisabledSuccessColor" Color="#FF507445"/>
+        <SolidColorBrush x:Key="DisabledFontColor">#FFB6A9A9</SolidColorBrush>
+
+        <ControlTemplate x:Key="navButtonTemplate" TargetType="{x:Type Button}">
+            <Border BorderBrush="{DynamicResource MainFontColor}"
+                    Background="{DynamicResource MainColor}"
+                    x:Name="nbBorder"
+                    BorderThickness="0, 0, 0, 2">
+                <ContentPresenter VerticalAlignment="Center"
+                                  HorizontalAlignment="Center" OpacityMask="#FFEE0000" 
+                                  TextBlock.Foreground="{DynamicResource MainFontColor}">
+                </ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="nbBorder" Property="Background" 
+                            Value="{DynamicResource MainButtonHoverColor}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        <ControlTemplate x:Key="secondaryButtonTemplate" TargetType="{x:Type Button}">
+            <Border BorderBrush="{DynamicResource MainFontColor}"
+                    Background="{DynamicResource SecondaryColor}"
+                    x:Name="snbBorder"
+                    BorderThickness="0, 0, 0, 0">
+                <ContentPresenter 
+                    x:Name="snbContentPresenter"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" TextBlock.Foreground="{DynamicResource MainFontColor}">
+                </ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="snbBorder" Property="Background" 
+                            Value="{DynamicResource MainButtonHoverColor}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="snbBorder" Property="Background" 
+                            Value="{DynamicResource DisabledColor}"/>
+                    <Setter TargetName="snbContentPresenter" Property="TextBlock.Foreground" 
+                            Value="{DynamicResource DisabledFontColor}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        <ControlTemplate x:Key="dangerButtonTemplate" TargetType="{x:Type Button}">
+            <Border BorderBrush="{DynamicResource MainFontColor}"
+                    Background="{DynamicResource DangerColor}"
+                    x:Name="snbBorder"
+                    BorderThickness="0, 0, 0, 0">
+                <ContentPresenter 
+                    x:Name="snbContentPresenter"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" TextBlock.Foreground="{DynamicResource MainFontColor}">
+                </ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="snbBorder" Property="Background"
+                            Value="{DynamicResource LightDangerColor}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="snbBorder" Property="Background" 
+                            Value="{DynamicResource DisabledDangerColor}"/>
+                    <Setter TargetName="snbContentPresenter" Property="TextBlock.Foreground" 
+                            Value="{DynamicResource DisabledFontColor}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="successButtonTemplate" TargetType="{x:Type Button}">
+            <Border BorderBrush="{DynamicResource MainFontColor}"
+                    Background="{DynamicResource SuccessColor}"
+                    x:Name="snbBorder"
+                    BorderThickness="0, 0, 0, 0">
+                <ContentPresenter 
+                    x:Name="snbContentPresenter"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" TextBlock.Foreground="{DynamicResource MainFontColor}">
+                </ContentPresenter>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="snbBorder" Property="Background"
+                            Value="{DynamicResource LightSuccessColor}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="snbBorder" Property="Background" 
+                            Value="{DynamicResource DisabledSuccessColor}"/>
+                    <Setter TargetName="snbContentPresenter" Property="TextBlock.Foreground" 
+                            Value="{DynamicResource DisabledFontColor}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        
+    </Application.Resources>
+    
+</Application>

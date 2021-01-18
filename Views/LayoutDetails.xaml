@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="WPF_ProductLabel.Views.LayoutDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_ProductLabel.Views"
+             xmlns:viewModel="clr-namespace:WPF_ProductLabel.ViewModel"
+             xmlns:model="clr-namespace:WPF_ProductLabel.Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="550" Background="#FFB2D8D8">
+    <DockPanel>
+        <Button DockPanel.Dock="Top" Content = "Add new" 
+                Command = "{Binding AddCommand}"
+                HorizontalAlignment = "Right" 
+                VerticalAlignment = "Top" 
+                Width = "75" />
+        <ScrollViewer DockPanel.Dock="Top" Height="330">
+            <DockPanel DockPanel.Dock="Top" LastChildFill="False" Background="White" IsEnabled="{Binding DetailsEnabled}">
+                <GroupBox DockPanel.Dock="Top" Header="General">
+                    <Grid MaxHeight="100" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel Grid.Column="0" LastChildFill="False">
+                            <Label Content="Name" DockPanel.Dock="Top" />
+                            <TextBox Text = "{Binding Path = TempLayout.Name, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="1" LastChildFill="False">
+                            <CheckBox Content="Show product name" IsChecked="{Binding Path = TempLayout.EnableProductName, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 2"/>
+                            <CheckBox Content="Show product number" IsChecked="{Binding Path = TempLayout.EnableProductNumber, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 2"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="2" LastChildFill="False">
+                            <CheckBox Content="Show tax information" IsChecked="{Binding Path = TempLayout.EnableTaxInfo, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 2"/>
+                            <CheckBox Content="Show barcode" IsChecked="{Binding Path = TempLayout.EnableBarcode, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 2"/>
+                        </DockPanel>
+
+                    </Grid>
+                </GroupBox>
+                <GroupBox DockPanel.Dock="Top" Header="Page">
+                    <Grid MaxHeight="100" IsEnabled="{Binding DetailsEnabled}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel Grid.Column="0" LastChildFill="False" IsEnabled="False">
+                            <Label Content="Width (mm)" DockPanel.Dock="Top" />
+                            <TextBox Text = "{Binding Path = TempLayout.PageWidthMM, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="1" LastChildFill="False" IsEnabled="False">
+                            <Label Content="Height (mm)" DockPanel.Dock="Top" />
+                            <TextBox Text = "{Binding Path = TempLayout.PageHeightMM, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="2" LastChildFill="False">
+                            <Label Content="Margin top/bottom (mm)" DockPanel.Dock="Top"/>
+                            <TextBox Text = "{Binding Path = TempLayout.PageMarginXMM, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="3" LastChildFill="False">
+                            <Label Content="Margin left/right (mm)" DockPanel.Dock="Top"/>
+                            <TextBox Text = "{Binding Path = TempLayout.PageMarginYMM, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox DockPanel.Dock="Top" Header="Label">
+                    <Grid IsEnabled="{Binding DetailsEnabled}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <DockPanel Grid.Column="0" Grid.Row="0" LastChildFill="False" Width="120">
+                            <Label Content="Width (mm)" DockPanel.Dock="Top" />
+                            <TextBox Text = "{Binding Path = TempLayout.LabelWidthMM, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="1" Grid.Row="0" LastChildFill="False" Width="120">
+                            <Label Content="Height (mm)" DockPanel.Dock="Top" />
+                            <TextBox Text = "{Binding Path = TempLayout.LabelHeightMM, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="2" Grid.Row="0" LastChildFill="False">
+                            <Label Content="Margin top/bottom (mm)" DockPanel.Dock="Top" />
+                            <TextBox Text = "{Binding Path = TempLayout.LabelMarginXMM, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="3" Grid.Row="0" LastChildFill="False">
+                            <Label Content="Margin left/right (mm)" DockPanel.Dock="Top" />
+                            <TextBox Text = "{Binding Path = TempLayout.LabelMarginYMM, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="0" Grid.Row="1" LastChildFill="False" Width="120" 
+                                   IsEnabled="False">
+                            <Label Content="Country ISO" DockPanel.Dock="Top" />
+                            <TextBox Text = "{Binding Path = TempLayout.CountryISO, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                        <!--<DockPanel Grid.Column="1" Grid.Row="1" LastChildFill="False" Width="120">
+                            <Label Content="Font size" DockPanel.Dock="Top" />
+                            <TextBox Text = "{Binding Path = TempLayout.FontSize, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="2" Grid.Row="1" LastChildFill="False" Width="120" 
+                                   IsEnabled="False">
+                            <Label Content="Font family" DockPanel.Dock="Top" />
+                            <TextBox Text = "{Binding Path = TempLayout.FontFamily, Mode = TwoWay}" 
+                                DockPanel.Dock="Top" Margin="5 0"/>
+                        </DockPanel>-->
+                    </Grid>
+                </GroupBox>
+                <GroupBox  DockPanel.Dock="Top" Header="Fields">
+                    <StackPanel>
+                        <Button Content="Delete Field" Width="100" 
+                                HorizontalAlignment="Right" Command="{Binding DeleteFieldCommand}"></Button>
+                        <local:FieldList/>
+                    </StackPanel>
+                </GroupBox>
+            </DockPanel>
+        </ScrollViewer>
+        <Button DockPanel.Dock="Left" Content = "Delete" 
+                Command = "{Binding DeleteCommand}"
+                HorizontalAlignment = "Left" 
+                VerticalAlignment = "Top" 
+                Width = "75" />
+        <Button DockPanel.Dock="Left" Content = "Save" 
+                Command = "{Binding SaveCommand}"
+                HorizontalAlignment = "Left" 
+                VerticalAlignment = "Top" 
+                Width = "75" />
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="WPF_ProductLabel.Views.LabelPreview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_ProductLabel.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300" >
+
+    <StackPanel>
+        <StackPanel Height="300" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Border BorderBrush="Black" 
+                Height="{Binding Path=SelectedLayout.LabelHeight}" 
+                Width="{Binding Path=SelectedLayout.LabelWidth}" 
+                BorderThickness="1" 
+                Visibility="{Binding IsSelectedLabelVisible}"
+                Padding="{Binding Path=SelectedLayout.LabelMargin}"
+                Background="White">
+                <ItemsControl ItemsSource="{Binding Path=SelectedLabel.Fields}" Grid.IsSharedSizeScope="True">
+                    <ItemsControl.ItemTemplate> 
+                        <DataTemplate>
+                            <StackPanel HorizontalAlignment="Left">
+                                <TextBlock Grid.Column="0"
+                                        Text="{Binding Value}" 
+                                        FontSize="{Binding FontSize}"
+                                        Width="{Binding Width}"
+                                        Height="{Binding Height}"
+                                        FontWeight="{Binding WeightText}"
+                                        FontFamily="{Binding FontFamilyText}"
+                                        TextWrapping="Wrap"
+                                        TextAlignment="{Binding TextAlignmentText}"
+                                        Background="{Binding ColorText}"
+                                        />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Border>
+        </StackPanel>
+        <DockPanel LastChildFill="False" Width="500" HorizontalAlignment="Center">
+            <Button Margin="20 0" DockPanel.Dock="Left" Content="Previous" Width="50" Height="25" Template="{StaticResource secondaryButtonTemplate}" Command="{Binding PreviousLabelCommand}"/>
+            <Button Margin="20 0" DockPanel.Dock="Right" Content="Next" Width="50" Height="25" Template="{StaticResource secondaryButtonTemplate}" Command="{Binding NextLabelCommand}"/>
+        </DockPanel>
+    </StackPanel>
+</UserControl>

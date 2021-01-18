@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_ProductLabel", "WPF_ProductLabel.csproj", "{E05FEA64-0D55-47B0-9698-26CDCC606278}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeLib", "..\BarcodeLib\BarcodeLib.csproj", "{3C5799AA-32AE-4ABB-9CEF-379BA0BD2763}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E05FEA64-0D55-47B0-9698-26CDCC606278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E05FEA64-0D55-47B0-9698-26CDCC606278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E05FEA64-0D55-47B0-9698-26CDCC606278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E05FEA64-0D55-47B0-9698-26CDCC606278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C5799AA-32AE-4ABB-9CEF-379BA0BD2763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5799AA-32AE-4ABB-9CEF-379BA0BD2763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5799AA-32AE-4ABB-9CEF-379BA0BD2763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5799AA-32AE-4ABB-9CEF-379BA0BD2763}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECE22713-0BC3-483A-A26D-9AF5518974F9}
+	EndGlobalSection
+EndGlobal

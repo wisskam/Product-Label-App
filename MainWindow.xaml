@@ -1,0 +1,53 @@
+﻿<Window x:Class="WPF_ProductLabel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_ProductLabel"
+        xmlns:views="clr-namespace:WPF_ProductLabel.Views"
+        xmlns:viewModels="clr-namespace:WPF_ProductLabel.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        SizeToContent="WidthAndHeight"
+        d:DesignHeight="450"
+        d:DesignWidth="800"
+        Background="{DynamicResource MainColor}"
+        ResizeMode="NoResize">
+
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate DataType = "{x:Type viewModels:LabelGeneratorViewModel}">
+            <views:LabelGeneratorView />
+        </DataTemplate>
+        <DataTemplate DataType = "{x:Type viewModels:LayoutListViewModel}">
+            <views:LayoutListView LoadDetailsCommand="{Binding LoadDetailsCommand}"/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "40" />
+            <RowDefinition Height = "*" />
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Right"
+                    Orientation="Horizontal" Width="Auto"
+                    Height="40" x:Name = "NavBar">
+            <!--<Button Content="Home" Margin="10 5" 
+                    Width="100" Template="{StaticResource navButtonTemplate}"/>-->
+            <Button Content="Generator" Margin="10 5" Width="100" 
+                    Command = "{Binding NavCommand}" CommandParameter = "generator" 
+                    Template="{StaticResource navButtonTemplate}"/>
+            <Button Content="Layouts" Margin="10 5" Width="100" 
+                    Command = "{Binding NavCommand}" CommandParameter = "layouts" 
+                    Template="{StaticResource navButtonTemplate}"/>
+        </StackPanel>
+
+        <Grid x:Name = "MainContent" Grid.Row = "1">
+            <ContentControl Content = "{Binding CurrentViewModel}" Height="400" Width="800"/>
+        </Grid>
+     </Grid>
+
+</Window>
