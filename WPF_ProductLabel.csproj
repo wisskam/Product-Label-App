@@ -87,10 +87,6 @@
     </Compile>
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="GenericRelayCommand.cs" />
-    <Compile Include="Mock.xaml.cs">
-      <DependentUpon>Mock.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Model\Label.cs" />
     <Compile Include="Model\Field.cs" />
     <Compile Include="Model\LayoutFieldMap.cs" />
@@ -131,10 +127,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Mock.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
     <Page Include="Views\DataLoaderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
